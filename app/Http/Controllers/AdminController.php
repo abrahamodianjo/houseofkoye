@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AdminController extends Controller
     {
         public function AdminDashboard(){
             return view('admin.index');
         
-    }//end of AdminDashboard
+    }//end of AdminDashboard method
 
     public function AdminLogout(Request $request){
         Auth::guard('web')->logout();
@@ -19,12 +20,20 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/admin/login');
-    }//end of destroy
+    }//end of destroy method
 
     public function AdminLogin(){
         return view('admin.admin_login');
-    }//end of AdminLogin
+    }//end of AdminLogin method
 
+    public function AdminProfile(){
+
+        $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.admin_profile_view',compact('profileData'));
+
+
+    }//end of AdminProfile method
  
 
     
