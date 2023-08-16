@@ -67,7 +67,7 @@
        @include('frontend.body.footer')
         <!-- Footer Area End -->
 
-        {{asset('frontend/')}}
+      
         <!-- Jquery Min JS -->
         <script src="        {{asset('frontend/assets/js/jquery.min.js')}}"></script>
         <!-- Bootstrap Bundle Min JS -->
