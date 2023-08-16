@@ -29,16 +29,39 @@
                             <a href="mailto:hello@atoli.com">hello@atoli.com</a>
                         </li>
 
+                        @auth
                         <li>
+                            @php
+
+                            $id = Auth::user()->id;
+                            $profileData = App\Models\User::find($id);
+                                
+                            @endphp
                             <i class='bx bxs-user-pin'></i>
-                            <a href="{{route('login')}}">Login</a>
+                            <a href="{{route('dashboard')}}">Hi {{$profileData->name}}</a>
                         </li>
 
                         <li>
                             <i class='bx bxs-user-rectangle'></i>
-                            <a href="{{route('register')}}">Register</a>
+                            <a href="{{route('user.logout')}}">Logout</a>
                         </li>
 
+                        @else
+
+                        <li>
+                            <i class='bx bxs-user-pin'></i>
+                            <a href="{{route('login')}}">login</a>
+                        </li>
+
+                        <li>
+                            <i class='bx bxs-user-rectangle'></i>
+                            <a href="{{route('register')}}">register</a>
+                        </li>
+
+
+                        @endauth
+
+                        
                        
 
                     </ul>

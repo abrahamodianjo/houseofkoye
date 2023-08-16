@@ -11,9 +11,9 @@
                     <a href="index.html">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
-                <li>User Dashboard </li>
+                <li>Dashboard </li>
             </ul>
-            <h3>User Dashboard</h3>
+            <h3>Change Password</h3>
         </div>
     </div>
 </div>

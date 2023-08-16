@@ -1,6 +1,12 @@
 @extends('frontend.main_master')
 @section('main')
 
+@php
+
+$id = Auth::user()->id;
+$profileData = App\Models\User::find($id);
+    
+@endphp
  <!-- Inner Banner -->
  <div class="inner-banner inner-bg6">
     <div class="container">
@@ -10,9 +16,9 @@
                     <a href="index.html">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
-                <li>User Dashboard </li>
+                <li>Dashboard </li>
             </ul>
-            <h3>User Dashboard</h3>
+            <h3>Welcome {{$profileData->name}} </h3>
         </div>
     </div>
 </div>
@@ -34,7 +40,7 @@
                         
 
                         <div class="service-article-title">
-                            <h2>User Dashboard </h2>
+                            <h2> Dashboard </h2>
                         </div>
 
                     <div class="service-article-content">
