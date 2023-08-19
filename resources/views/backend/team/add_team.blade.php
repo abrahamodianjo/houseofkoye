@@ -27,7 +27,7 @@
     <div class="col-lg-8">
         <div class="card">
 
-            <form action="{{ route('team.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('team.store') }}" method="post" enctype="multipart/form-data" id="myForm">
                 @csrf
 
             <div class="card-body">
@@ -35,15 +35,15 @@
                     <div class="col-sm-3">
                         <h6 class="mb-0"> Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                        <input type="text" name="name" class="form-control"  />
+                    <div class="form-group col-sm-9 text-secondary">
+                        <input type="text" name="name" class="form-control" />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-3">
                         <h6 class="mb-0">Postion</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class=" form-group col-sm-9 text-secondary">
                         <input type="text" name="position"  class="form-control"  />
                     </div>
                 </div>
@@ -133,5 +133,59 @@
             });
         });
         </script>      
+
+<!--validation code -->
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                name: {
+                    required : true,
+                }, 
+                position: {
+                    required : true,
+                }, 
+                facebook: {
+                    required : true,
+                }, 
+                image: {
+                    required : true,
+                }, 
+                
+            },
+            messages :{
+                name: {
+                    required : 'Please Enter Name',
+                },
+         
+                 position: {
+                required : 'Please Enter position',
+                 },  
+                 facebook: {
+                    required : 'Please Enter facebook url',
+                },
+                image: {
+                    required : 'Please select image',
+                },
+         
+                 
+
+          
+        },
+            errorElement : 'span', 
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+    
+</script>
 
 @endsection
