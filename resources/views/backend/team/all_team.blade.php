@@ -55,7 +55,7 @@
                             <td>{{$item->linkedin}}</td>
                             <td>
                             <i><a href="{{route('edit.team',$item->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
-                            <i><a href="" class="btn btn-danger radius-30 bx bx-trash "></a></i>        
+                            <i><a href="{{route('delete.team',$item->id)}}" class="btn btn-danger radius-30 bx bx-trash "></a></i>        
                             </td>
                             
                         </tr>
