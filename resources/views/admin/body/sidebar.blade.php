@@ -22,9 +22,9 @@
       
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
+                <div class="parent-icon"><i class="lni lni-users"></i>
                 </div>
-                <div class="menu-title">Manage Teams </div>
+                <div class="menu-title"> Teams </div>
             </a>
             <ul>
                 <li> <a href="{{route('all.team')}}"><i class='bx bx-radio-circle'></i>View Teams</a>
@@ -36,9 +36,9 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
+                <div class="parent-icon"><i class="bx bx-book-add"></i>
                 </div>
-                <div class="menu-title">Manage Book Area </div>
+                <div class="menu-title">Book Area - Home </div>
             </a>
             <ul>
                 <li> <a href="{{route('book.area')}}"><i class='bx bx-radio-circle'></i>Update Book Area</a>
@@ -48,7 +48,7 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
+                <div class="parent-icon"><i class=" bx bx-buildings"></i>
                 </div>
                 <div class="menu-title">Manage Room Type </div>
             </a>
