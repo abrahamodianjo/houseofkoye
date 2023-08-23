@@ -39,8 +39,12 @@
                             <td> <img src="{{ (!empty($item->room->image)) ? url('upload/roomimg/'.$item->room->image) : url('upload/no_image.jpg') }}" alt="" style="width: 50px; height:30px;"></td>
                             <td>{{$item->name}}</td>
                             <td>
-                            <i><a href="{{route('edit.team',$item->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
-                            <i><a href="{{route('delete.team',$item->id)}}" class="btn btn-danger radius-30 bx bx-trash " id="delete"></a></i>        
+                               @foreach($rooms as $roo)
+                          
+
+                            <i><a href="{{route('edit.room',$roo->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
+                            <i><a href="#" class="btn btn-danger radius-30 bx bx-trash " id="delete"></a></i>        
+                            @endforeach     
                             </td>
                             
                         </tr>
