@@ -73,15 +73,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <label for="input1" class="form-label">Room Price</label>
                                         <input type="text" name="price" class="form-control" id="input1" value="{{$editData->price}}">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <label for="input2" class="form-label">size </label>
+                                        <input type="text" name="size" class="form-control" id="input2" value="{{$editData->size}}">
+                                    </div>
+                                    <div class="col-md-3">
                                         <label for="input2" class="form-label">Discount (%)</label>
                                         <input type="text" name="discount" class="form-control" id="input2" value="{{$editData->discount}}">
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div> 
+                                    <div class="col-md-3">
                                         <label for="input2" class="form-label">Room Capcaity</label>
                                         <input type="text" name="room_capacity" class="form-control" id="input2" value="{{$editData->room_capacity}}">
                                     </div>
