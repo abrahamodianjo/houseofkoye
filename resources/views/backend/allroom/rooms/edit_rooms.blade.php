@@ -56,7 +56,7 @@
                                     <div class="col-md-6">
                                         <label for="input3" class="form-label">Main Image</label>
                                         <input type="file"  name="image" class="form-control" id="image"><br>
-                                        <img id="showImage" src="{{ (!empty($editData->image)) ? url('upload/roomimg/'.$editData->image) : url('upload/no_image.jpg') }}" alt="Admin" class=" bg-primary" width="80">
+                                        <img id="showImage" src="{{ (!empty($editData->image)) ? url('upload/roomimg/'.$editData->image) : url('upload/no_image.jpg') }}" alt="Admin" class=" bg-primary" width="70" height="60">
                 
                                     </div>
 
@@ -67,6 +67,10 @@
                                         <label for="input4" class="form-label">Gallery Image</label>
                                         <input type="file"  name="multi_img[]" class="form-control" multiple id="multiImg" accept="image/jpeg, image/jpg, image/gif, image/png">
 
+                                        @foreach ($multiimgs as $item)
+                                        <img src="{{ (!empty($item->multi_img)) ? url('upload/roomimg/multi_img/'.$item->multi_img) : url('upload/no_image.jpg') }}" alt="Admin" class=" bg-primary" width="80">
+                                        <a href="" ><i class="lni lni-close"></i></a>
+                                        @endforeach
                                             <br>                                        
                                             <div class="row" id="preview_img" >
                                            
