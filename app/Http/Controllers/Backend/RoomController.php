@@ -43,10 +43,32 @@ class RoomController extends Controller
         Image::make($image)->resize(550, 850)->save('upload/rooming/' . $name_gen);
         $room['image'] = $name_gen;
 
-        }
+
 
         $room->save();
 
+        ///// update for facility table
+        if($request->facility_name == NULL) {
 
+
+        $notification = array(
+            'message' => 'Sorry! Not any basic item selection',
+            'alert-type' => 'error'
+        );
+
+        return redirect()->back()->with($notification);
+        } else{
+            Facility::where('room_id',$id)->delete();
+            $facilities = count($request->facilities);
+            for($i=0; $i < $facilities; $i++){
+                $fcount = new Facility();
+                $fcount->rooms_id = $room->id;
+                $fcount->facility_name = $request->facility_name[$i];
+                $fcount->save();
+            }// end for 
+        } // end else
+
+        } //End Method
     }
+
 }
