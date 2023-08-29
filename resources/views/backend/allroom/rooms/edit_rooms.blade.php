@@ -97,8 +97,8 @@
                                             <label for="input7" class="form-label">Room View</label>
                                             <select name="view" id="input7" class="form-select">
                                                 <option selected="">Choose...</option>
-                                                <option value="Sea View">Hill View</option>
-                                                <option value="Hill View">Sea View</option>
+                                                <option value="Sea View" {{$editData->view == 'Sea View'?'selected':''}}>Sea View</option>
+                                                <option value="Hill View" {{$editData->view == 'Hill View'?'selected':''}}>Hill View</option>
                                             
                                             </select>
                                         </div>
@@ -112,9 +112,9 @@
                                             <label for="input7" class="form-label">Bed style</label>
                                             <select name="bed_style" id="input7" class="form-select">
                                                 <option selected="">Choose...</option>
-                                                <option value="Queen bed">Queen Bed</option>
-                                                <option value="Twin Bed">Twin Bed</option>
-                                                <option value="King Bed">Kind Bed</option>
+                                                <option value="Queen bed" {{$editData->bed_style == 'Queen Bed'?'selected':''}}>Queen Bed</option>
+                                                <option value="Twin Bed" {{$editData->bed_style == 'Twin Bed'?'selected':''}}>Twin Bed</option>
+                                                <option value="King Bed" {{$editData->bed_style == 'Kind Bed'?'selected':''}}>Kind Bed</option>
                                             </select>
                                         </div>
                                     </div>
@@ -166,7 +166,7 @@
                                                  <div class="col-md-4">
                                                     <div class="form-group" style="padding-top: 30px;">
                                                           <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></a>
-                                                          <span class="btn btn-danger btn-sm removeeventmore"><i class="fa fa-minus-circle"></i></span>
+                                                          <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                                     </div>
                                                  </div>
                                               </div>
@@ -197,9 +197,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="padding-top: 30px;">
-                                                <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
-                                       
-                                               <span class="btn btn-danger removeeventmore"><i class="lni lni-circle-minus"></i></span>
+                                                                <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
+                                                                <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -360,8 +359,8 @@
                    </select>
                 </div>
                 <div class="form-group col-md-6" style="padding-top: 20px">
-                   <span class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></span>
-                   <span class="btn btn-danger removeeventmore"><i class="lni lni-circle-minus"></i></span>
+                    <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
+                    <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                 </div>
              </div>
           </div>
