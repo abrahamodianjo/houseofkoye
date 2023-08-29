@@ -68,14 +68,16 @@
                                         <input type="file"  name="multi_img[]" class="form-control" multiple id="multiImg" accept="image/jpeg, image/jpg, image/gif, image/png">
 
                                         @foreach ($multiimgs as $item)
-                                        <img src="{{ (!empty($item->multi_img)) ? url('upload/roomimg/multi_img/'.$item->multi_img) : url('upload/no_image.jpg') }}" alt="Admin" class=" bg-primary" width="80">
-                                        <a href="" ><i class="lni lni-close"></i></a>
+                                        
+                                        <img src="{{ (!empty($item->multi_img)) ? url('upload/roomimg/multi_img/'.$item->multi_img) : url('upload/no_image.jpg') }}" alt="Admin" class=" bg-primary" width="60">
+                                        
+                                        <a href="{{route('multi.image.delete', $item->id)}}" ><i class="lni lni-close"></i></a>
+
                                         @endforeach
-                                            <br>                                        
-                                            <div class="row" id="preview_img" >
+                                        
                                            
                                         </div>
-                                    </div>
+                                    
 
                                     <div class="col-md-3">
                                         <label for="input1" class="form-label">Room Price</label>
@@ -201,7 +203,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="padding-top: 30px;">
-                                                                <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
+                                                                <a class="btn btn-success addeventmore"><i class="<i class="lni lni-circle-minus"></i>"></i></a>
                                                                 <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                                             </div>
                                                         </div>
@@ -363,7 +365,7 @@
                    </select>
                 </div>
                 <div class="form-group col-md-6" style="padding-top: 20px">
-                    <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
+                    <a class="btn btn-success addeventmore"><i class="lni lni-circle-minus"></i></a>
                     <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                 </div>
              </div>

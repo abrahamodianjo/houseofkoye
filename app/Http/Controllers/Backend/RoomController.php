@@ -10,6 +10,8 @@ use App\Models\MultiImage;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 
+use function Laravel\Prompts\alert;
+
 class RoomController extends Controller
 {
     public function EditRoom($id){
@@ -104,7 +106,36 @@ class RoomController extends Controller
     }//End Method 
 
 
+    public function MultiImageDelete($id){
 
+        $deletedata = MultiImage::where('id', $id)->first();
+
+        if($deletedata){
+            $imagePath = $deletedata->multi_img;
+
+            //Check if the image exists before deleting(unlinking)
+            if(file_exists($imagePath)){
+                unlink($imagePath);
+                echo "Image deleted successfully";
+
+            }else {
+                echo "Image does not exisit";
+            }
+
+            //Deelete the record from the database
+
+            MultiImage::where('id', $id)->delete();
+
+        }
+
+        $notification = array(
+            'message' => 'Mulit Image deleted successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+        
+    }
     
 
 
