@@ -171,7 +171,7 @@
                                                  </div>
                                                  <div class="col-md-4">
                                                     <div class="form-group" style="padding-top: 30px;">
-                                                          <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></a>
+                                                          <a class="btn btn-success btn-sm addeventmore"><i class="lni lni-circle-plus"></i></a>
                                                           <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                                     </div>
                                                  </div>
@@ -203,7 +203,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group" style="padding-top: 30px;">
-                                                                <a class="btn btn-success addeventmore"><i class="<i class="lni lni-circle-minus"></i>"></i></a>
+                                                                <span class="btn btn-success btn-sm addeventmore"><i class="lni lni-circle-plus"></i></span>
                                                                 <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                                             </div>
                                                         </div>
@@ -253,71 +253,22 @@
                                         </div>
                                          {{-- // End primaryhome --}}
                             
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                        <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <a class="card-title btn btn-primary float-right" href="#">
-                                                        <i class="lni lni-plus">Add New</i>
-                                                    </a>
-
-                                                    <div class="roomnoHide" id="roomnoHide">
-                                                        <form>
-                                                            <div class="row">
-                                                            <div class="col-md-3">
-                                                                <label for="input2" class="form-label">Room No</label>
-                                                                <input type="text" name="room_no" class="form-control" id="input2" value="{{$editData->room_capacity}}">
-                                                            </div>
                         
-                                                            <div class="col-md-6">
-                                                               
-                                                                
-                                                                <div class="col-md-12">
-                                                                    <label for="input7" class="form-label">status</label>
-                                                                    <select name="view" id="input7" class="form-select">
-                                                                        <option selected="">Select Status...</option>
-                                                                        <option value="Acive">Active</option>
-                                                                        <option value="Inactive">Inactive</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                            <button type="submit" class="btn btn-success" style="margin-top: 28px;">Save</button>    
-                                                            </div>
-                                                        </div>
-                        
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                               {{-- // End primaryprofile --}}
                             
                             
-                            
-                                    </div>
-                                </div>
+        
+                    <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <a class="card-title btn btn-primary float-right" href="#">
+                                    <i class="lni lni-plus">Add New</i>
+                                </a>
+         
                             </div>
+                        </div>
+                    </div>
                             
-                            
+                            {{-- // End primaryprofile --}}
 
 
 
@@ -392,7 +343,7 @@
                    </select>
                 </div>
                 <div class="form-group col-md-6" style="padding-top: 20px">
-                    <a class="btn btn-success addeventmore"><i class="lni lni-circle-minus"></i></a>
+                    <a class="btn btn-success btn-sm addeventmore"><i class="lni lni-circle-plus"></i></a>
                     <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                 </div>
              </div>
