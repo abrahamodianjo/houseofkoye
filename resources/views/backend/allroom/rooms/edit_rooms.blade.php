@@ -265,17 +265,20 @@
                                 </a>
 
                             <div class="roomnoHide" id="roomnoHide">
-                                <form action="">
+                                <form action="{{route('store.room.number', $editData->id)}}" method="POST">
+                                    @csrf
+
+                                    <input type="hidden" name="room_type_id" value="{{$editData->roomtype_id}}">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label for="input2" class="form-label">Room No</label>
-                                            <input type="text" name="room_no" class="form-control" id="input2" value="{{$editData->room_capacity}}">
+                                            <input type="text" name="room_no" class="form-control" id="input2">
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="col-md-12">
                                                 <label for="input7" class="form-label">Status</label>
-                                                <select name="view" id="input7" class="form-select">
+                                                <select name="status" id="input7" class="form-select">
                                                     <option selected="">Select Status...</option>
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
@@ -284,7 +287,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <button type="button" class="btn btn-success" style="margin-top: 28px;" >Save</button>
+                                            <button type="submit" class="btn btn-success" style="margin-top: 28px;" >Save</button>
                                         </div>
 
                                     </div>
