@@ -15,17 +15,19 @@ use function Laravel\Prompts\alert;
 
 class RoomController extends Controller
 {
-    public function EditRoom($id){
+    public function EditRoom($id)
+    {
 
-        $basic_facility = Facility::where('rooms_id',$id)->get();
-        $multiimgs = MultiImage::where('rooms_id',$id)->get();
+        $basic_facility = Facility::where('rooms_id', $id)->get();
+        $multiimgs = MultiImage::where('rooms_id', $id)->get();
         $editData = Room::find($id);
-        $allroomNo = RoomNumber::where('rooms_id',$id)->get();
-        return view('backend.allroom.rooms.edit_rooms',compact('editData','basic_facility','multiimgs','allroomNo'));
+        $allroomNo = RoomNumber::where('rooms_id', $id)->get();
+        return view('backend.allroom.rooms.edit_rooms', compact('editData', 'basic_facility', 'multiimgs', 'allroomNo'));
     } //End Method 
 
 
-    public function UpdateRoom(Request $request, $id){
+    public function UpdateRoom(Request $request, $id)
+    {
 
         $room  = Room::find($id);
         $room->roomtype_id = $room->roomtype_id;
@@ -39,34 +41,33 @@ class RoomController extends Controller
         $room->bed_style = $request->bed_style;
         $room->discount = $request->discount;
         $room->short_desc = $request->short_desc;
-        $room->description = $request->description; 
+        $room->description = $request->description;
         /// Update Single Image 
 
-        if($request->file('image')){
+        if ($request->file('image')) {
 
-        $image = $request->file('image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(550,850)->save('upload/roomimg/'.$name_gen);
-        $room['image'] = $name_gen; 
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(550, 850)->save('upload/roomimg/' . $name_gen);
+            $room['image'] = $name_gen;
         }
 
         $room->save();
 
         //// Update for Facility Table 
 
-        if($request->facility_name == NULL){
+        if ($request->facility_name == NULL) {
 
             $notification = array(
                 'message' => 'Sorry! Not Any Basic Facility Select',
                 'alert-type' => 'error'
             );
-    
-            return redirect()->back()->with($notification);
 
-        } else{
-            Facility::where('rooms_id',$id)->delete();
+            return redirect()->back()->with($notification);
+        } else {
+            Facility::where('rooms_id', $id)->delete();
             $facilities = Count($request->facility_name);
-            for($i=0; $i < $facilities; $i++ ){
+            for ($i = 0; $i < $facilities; $i++) {
                 $fcount = new Facility();
                 $fcount->rooms_id = $room->id;
                 $fcount->facility_name = $request->facility_name[$i];
@@ -76,17 +77,16 @@ class RoomController extends Controller
 
         //// Update Multi Image 
 
-        if($room->save()){
+        if ($room->save()) {
             $files = $request->multi_img;
-            if(!empty($files)){
-                $subimage = MultiImage::where('rooms_id',$id)->get()->toArray();
-                MultiImage::where('rooms_id',$id)->delete();
- 
+            if (!empty($files)) {
+                $subimage = MultiImage::where('rooms_id', $id)->get()->toArray();
+                MultiImage::where('rooms_id', $id)->delete();
             }
-            if(!empty($files)){
-                foreach($files as $file){
-                    $imgName = date('YmdHi').$file->getClientOriginalName();
-                    $file->move('upload/roomimg/multi_img/',$imgName);
+            if (!empty($files)) {
+                foreach ($files as $file) {
+                    $imgName = date('YmdHi') . $file->getClientOriginalName();
+                    $file->move('upload/roomimg/multi_img/', $imgName);
                     $subimage['multi_img'] = $imgName;
 
                     $subimage = new MultiImage();
@@ -94,7 +94,6 @@ class RoomController extends Controller
                     $subimage->multi_img = $imgName;
                     $subimage->save();
                 }
-
             }
         } // end if
 
@@ -103,31 +102,29 @@ class RoomController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
+    } //End Method 
 
-    }//End Method 
 
-
-    public function MultiImageDelete($id){
+    public function MultiImageDelete($id)
+    {
 
         $deletedata = MultiImage::where('id', $id)->first();
 
-        if($deletedata){
+        if ($deletedata) {
             $imagePath = $deletedata->multi_img;
 
             //Check if the image exists before deleting(unlinking)
-            if(file_exists($imagePath)){
+            if (file_exists($imagePath)) {
                 unlink($imagePath);
                 echo "Image deleted successfully";
-
-            }else {
+            } else {
                 echo "Image does not exisit";
             }
 
             //Deelete the record from the database
 
             MultiImage::where('id', $id)->delete();
-
         }
 
         $notification = array(
@@ -136,27 +133,56 @@ class RoomController extends Controller
         );
 
         return redirect()->back()->with($notification);
-        
     }
-    
-    public function StoreRoomNumber(Request $request, $id){
+
+    public function StoreRoomNumber(Request $request, $id)
+    {
         $data = new RoomNumber();
         $data->rooms_id = $id;
         $data->room_type_id = $request->room_type_id;
         $data->room_no = $request->room_no;
         $data->status = $request->status;
         $data->save();
-        
+
         $notification = array(
             'message' => 'Room Number added successfully',
             'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
-        
+    } //End Method
+
+    public function EditRoomNumber($id){
+
+        $editroomno = RoomNumber::find($id);
+        return view('backend.allroom.rooms.edit_room_no',compact('editroomno'));
 
     }//End Method
 
+    public function UpdateRoomNumber(Request $request, $id) 
+    {   
+        $data = RoomNumber::find($id);
+        $data->room_no = $request->room_no;
+        $data->status = $request->status;
+        $data->save();
 
+        $notification = array(
+            'message' => 'Room Number Updated Successfully',
+            'alert-type'=> 'success',
+
+        );
+        return redirect()->route('room.type.list')->with($notification);
+    }//End Method
+
+    public function DeleteRoomNumber($id){
+
+        RoomNumber::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Room Number Deleted Successfully',
+            'alert-type'=> 'success',
+        );
+        
+        return redirect()->route('room.type.list')->with($notification);
+    }
 }
- 
