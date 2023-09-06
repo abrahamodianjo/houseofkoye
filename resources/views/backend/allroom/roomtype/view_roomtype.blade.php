@@ -43,7 +43,7 @@
                           
 
                             <i><a href="{{route('edit.room',$roo->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
-                            <i><a href="#" class="btn btn-danger radius-30 bx bx-trash " id="delete"></a></i>        
+                            <i><a href="{{route('delete.room',$roo->id)}}" class="btn btn-danger radius-30 bx bx-trash " id="delete"></a></i>        
                             @endforeach     
                             </td>
                             
