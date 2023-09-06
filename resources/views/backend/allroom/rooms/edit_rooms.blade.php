@@ -120,7 +120,7 @@
                                                 <option selected="">Choose...</option>
                                                 <option value="Queen bed" {{$editData->bed_style == 'Queen Bed'?'selected':''}}>Queen Bed</option>
                                                 <option value="Twin Bed" {{$editData->bed_style == 'Twin Bed'?'selected':''}}>Twin Bed</option>
-                                                <option value="King Bed" {{$editData->bed_style == 'Kind Bed'?'selected':''}}>Kind Bed</option>
+                                                <option value="King Bed" {{$editData->bed_style == 'King Bed'?'selected':''}}>King Bed</option>
                                             </select>
                                         </div>
                                     </div>
