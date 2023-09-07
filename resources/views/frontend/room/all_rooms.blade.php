@@ -35,7 +35,7 @@
                         <img src="{{asset('upload/roomimg/'.$item->image)}}" alt="Images" style="width:500px; height:450px">
                     </a>
                     <div class="content">
-                        <h3><a href="room-details.html">{{ $item['type']['name'] }}</a></h3>
+                        <h3><a href="{{url('/rooms/details/'.$item->id)}}">{{ $item['type']['name'] }}</a></h3>
                         <ul>
                             <li class="text-color">{{($item->price)}}</li>
                             <li class="text-color">Per Night</li>
