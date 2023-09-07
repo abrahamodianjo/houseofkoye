@@ -4,10 +4,8 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\BookArea;
 use App\Models\RoomType;
 use App\Models\Room;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
 
 
