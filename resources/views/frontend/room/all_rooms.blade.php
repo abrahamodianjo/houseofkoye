@@ -7,10 +7,10 @@
         <div class="inner-title">
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{url('/')}}">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
-                <li>Rooms</li>
+                <li><a href="{{route('froom.all')}}">View All Rooms</a></li>
             </ul>
             <h3>Rooms</h3>
         </div>
@@ -31,7 +31,7 @@
             @foreach($rooms as $item)
             <div class="col-lg-4 col-md-6">
                 <div class="room-card">
-                    <a href="room-details.html">
+                    <a href="{{url('/rooms/details/'.$item->id)}}">
                         <img src="{{asset('upload/roomimg/'.$item->image)}}" alt="Images" style="width:500px; height:450px">
                     </a>
                     <div class="content">

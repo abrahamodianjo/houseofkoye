@@ -6,12 +6,16 @@
         <div class="inner-title">
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{url('/')}}">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
-                <li>Room Details </li>
+                <li>
+                    <a href="{{route('froom.all')}}">
+                        View All Rooms
+                    </a>
+                 </li>
             </ul>
-            <h3>Room Details</h3>
+            <h3>{{($roomdetails->type->name)}}</h3>
         </div>
     </div>
 </div>
@@ -91,27 +95,19 @@
             <div class="col-lg-8">
                 <div class="room-details-article">
                     <div class="room-details-slider owl-carousel owl-theme">
+                        @foreach($multiImage as $image)
                         <div class="room-details-item">
-                            <img src="assets/img/room/room-details-img1.jpg" alt="Images">
+                            <img src="{{asset('upload/roomimg/multi_img/'.$image->multi_img)}}" alt="Images">
                         </div>
-                        <div class="room-details-item">
-                            <img src="assets/img/room/room-details-img2.jpg" alt="Images">
-                        </div>
-                        <div class="room-details-item">
-                            <img src="assets/img/room/room-details-img3.jpg" alt="Images">
-                        </div>
+                        @endforeach
                     </div>
 
-
-
-
-
                     <div class="room-details-title">
-                        <h2>Double Bed Suits With Royal Express and Super Duplex Feelings</h2>
+                        <h2>{{$roomdetails->type->name}}</h2>
                         <ul>
                             
                             <li>
-                               <b> Basic : $120/Night/Room</b>
+                               <b>Basic : ${{$roomdetails->price}}/Night/Room</b>
                             </li> 
                          
                         </ul>
@@ -119,9 +115,7 @@
 
                     <div class="room-details-content">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
-                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                            {!! $roomdetails->description !!}
                         </p>
                         <p>
                             Ecespiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
@@ -137,14 +131,10 @@
 <div class="side-bar-plan">
                         <h3>Basic Plan Facilities</h3>
                         <ul>
-                            <li><a href="#">Lunch Facility</a></li>
-                            <li><a href="#">Breakfast Facility</a></li>
-                            <li><a href="#">Outdoor Kitchen</a></li>
-                            <li><a href="#">Shampoo and Soap</a></li>
-                            <li><a href="#">Dinner Facility</a></li>
-                            <li><a href="#">Wireless Connectivity</a></li>
-                            <li><a href="#">Double Bed</a></li>
-                            <li><a href="#">5 Star Food Favor</a></li>
+                            @foreach($facility as $fac)
+                            <li><a href="#">{{($fac->facility_name)}}</a></li>
+                            @endforeach
+                            
                         </ul>
 
                         
@@ -162,14 +152,14 @@
 
 
 <div class="services-bar-widget">
-                        <h3 class="title">Download Brochures</h3>
+                        <h3 class="title">Room Details</h3>
 <div class="side-bar-list">
     <ul>
        <li>
-            <a href="#"> <b>Capacity : </b> 1 Person <i class='bx bxs-cloud-download'></i></a>
+            <a href="#"> <b>Capacity : </b> {{$roomdetails->room_capacity}} Person(s) <i class='bx bxs-cloud-download'></i></a>
         </li>
         <li>
-             <a href="#"> <b>Size : </b> 25m2 / 276ft2 <i class='bx bxs-cloud-download'></i></a>
+             <a href="#"> <b>Size : </b>{{$roomdetails->size}}ft2 <i class='bx bxs-cloud-download'></i></a>
         </li>
        
        
@@ -186,14 +176,14 @@
 
 <div class="col-lg-6">
 <div class="services-bar-widget">
-<h3 class="title">Download Brochures</h3>
+<h3 class="title">Room Details</h3>
 <div class="side-bar-list">
     <ul>
        <li>
-            <a href="#"> <b>View : </b> Balcony <i class='bx bxs-cloud-download'></i></a>
+            <a href="#"> <b>View : </b> {{$roomdetails->view}} <i class='bx bxs-cloud-download'></i></a>
         </li>
         <li>
-             <a href="#"> <b>Bad Style : </b> Smallsize / Twin <i class='bx bxs-cloud-download'></i></a>
+             <a href="#"> <b>Bad Style : </b> {{$roomdetails->bed_style}} <i class='bx bxs-cloud-download'></i></a>
         </li>
          
     </ul>
