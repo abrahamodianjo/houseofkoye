@@ -75,7 +75,7 @@ class TeamController extends Controller
             Team::findOrFail($team_id)->update([
 
                 'name' => $request->name,
-                'postion' => $request->postion,
+                'position' => $request->position,
                 'facebook' => $request->facebook,
                 'instagram' => $request->instagram,
                 'twitter' => $request->twitter,
