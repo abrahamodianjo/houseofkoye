@@ -16,7 +16,7 @@ $bookarea = App\Models\BookArea::find(1);
                             {{$bookarea->short_desc}}    
                         </p>
                     </div>
-                    <a href="#" class="default-btn btn-bg-three">Quick Booking</a>
+                    <a href="{{route('froom.all')}}" class="default-btn btn-bg-three">Quick Booking</a>
                 </div>
             </div>
 
