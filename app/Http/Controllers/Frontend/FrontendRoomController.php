@@ -10,6 +10,7 @@ use App\Models\RoomType;
 use App\Models\Room;
 use App\Models\MultiImage;
 use App\Models\Facility;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Carbon;
 
 class FrontendRoomController extends Controller
@@ -30,5 +31,27 @@ class FrontendRoomController extends Controller
         //when other rooms display, dont display current room details on other rooms section
         $otherRooms = Room::where('id' ,'!=', $id)->orderBy('id', 'DESC')->limit(2)->get();
         return view('frontend.room.room_details',compact('roomdetails','facility','multiImage', 'otherRooms'));
+    }//End Method
+
+    public  function BookingSearch(Request $request){
+
+        $request->flash();
+
+        if($request->checkin == $request->check_out){
+            
+            $notification = array(
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'error'
+            );
+
+            return redirect()->back()->with($notification);
+        }
+
+        $sdate = date('Y-m-d',strtotime($request->check_in));
+        $edate = date('Y-m-d',strtotime($request->check_out));
+        $alldate = Carbon::create($edate)->subDay();
+        $d_period = CarbonPeriod::create($sdate,$alldate);
+
+
     }//End Method
 }

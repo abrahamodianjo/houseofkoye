@@ -19,7 +19,7 @@
 <div class="banner-form-area">
     <div class="container">
         <div class="banner-form">
-            <form >
+            <form method="GET" action="{{route('booking.search')}}">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3">
                         <div class="form-group">
