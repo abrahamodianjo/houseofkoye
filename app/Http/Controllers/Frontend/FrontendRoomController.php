@@ -11,6 +11,7 @@ use App\Models\Room;
 use App\Models\MultiImage;
 use App\Models\Facility;
 use Carbon\CarbonPeriod;
+use App\Models\RoomBookedDate;
 use Illuminate\Support\Carbon;
 
 class FrontendRoomController extends Controller
@@ -51,7 +52,15 @@ class FrontendRoomController extends Controller
         $edate = date('Y-m-d',strtotime($request->check_out));
         $alldate = Carbon::create($edate)->subDay();
         $d_period = CarbonPeriod::create($sdate,$alldate);
+        $dt_array = [];
+        foreach($d_period as $period) {
 
+            array_push($dt_array,date('y-m-d', strtotime($period)));
+            
+        }
+        $check_date_booking_ids = RoomBookedDate::whereIn('book_date',$dt_array)->distinct()->pluck('booking_id')->toArray();
+     
+        $rooms = Room::withCount('room_numbers')->where('status',1)->get();
 
     }//End Method
 }
