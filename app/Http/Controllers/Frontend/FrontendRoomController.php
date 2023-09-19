@@ -64,4 +64,20 @@ class FrontendRoomController extends Controller
         return view('frontend.room.search_room',compact('rooms','check_date_booking_ids'));
 
     }//End Method
+
+    public function SeacrhRoomDetails(Request $request, $id){
+        $request->flash();
+
+        $roomdetails = Room::find($id);
+        $multiImage = MultiImage::where('rooms_id',$id)->get();
+        $facility = Facility::where('rooms_id',$id)->get();
+
+        //when other rooms display, dont display current room details on other rooms section
+        $otherRooms = Room::where('id' ,'!=', $id)->orderBy('id', 'DESC')->limit(2)->get();
+        $room_id = $id;
+        return view('frontend.room.search_room_details',compact('roomdetails','facility','multiImage', 'otherRooms', 'room_id'));
+
+
+    }//End Method
+
 }
