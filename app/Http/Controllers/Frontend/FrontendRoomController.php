@@ -38,10 +38,10 @@ class FrontendRoomController extends Controller
 
         $request->flash();
 
-        if($request->checkin == $request->check_out){
-            
+        if ($request->check_in == $request->check_out) {
+
             $notification = array(
-                'message' => 'Something Went Wrong',
+                'message' => 'Choose the correct date',
                 'alert-type' => 'error'
             );
 
@@ -53,13 +53,12 @@ class FrontendRoomController extends Controller
         $alldate = Carbon::create($edate)->subDay();
         $d_period = CarbonPeriod::create($sdate,$alldate);
         $dt_array = [];
-        foreach($d_period as $period) {
-
-            array_push($dt_array,date('y-m-d', strtotime($period)));
-            
+        foreach ($d_period as $period) {
+           array_push($dt_array, date('Y-m-d', strtotime($period)));
         }
+
         $check_date_booking_ids = RoomBookedDate::whereIn('book_date',$dt_array)->distinct()->pluck('booking_id')->toArray();
-     
+
         $rooms = Room::withCount('room_numbers')->where('status',1)->get();
 
         return view('frontend.room.search_room',compact('rooms','check_date_booking_ids'));
