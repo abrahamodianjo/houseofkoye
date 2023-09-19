@@ -6,7 +6,7 @@
         <div class="inner-title">
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{url('rooms')}}">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
                 <li>Room Details </li>
@@ -61,17 +61,38 @@
         </div>
 
         <div class="col-lg-12">
-            <div class="form-group">
+            <div class="form-group" name="number_of_rooms" id="select_room">
                 <label>Numbers of Rooms</label>
                 <select class="form-control">
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
+                    @for ($i = 1; $i <= 5; $i++) 
+                    <option value="0{{$i}}">0{{$i}}</option>
+                @endfor
                 </select>	
             </div>
         </div>
+
+
+        <div class="col-lg-12">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td> <p>Sub-Total</p></td>
+                        <td style="text-align: right"><p>subTotal</p></td>
+                    </tr>
+                    <tr>
+                        <td> <p>Discount</p></td>
+                        <td  style="text-align: right"><p>subTotal</p></td>
+                    </tr>
+                    <tr>
+                        <td> <p>Total</p></td>
+                        <td  style="text-align: right"><p>subTotal</p></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+        </div>
+
 
         <div class="col-lg-12 col-md-12">
             <button type="submit" class="default-btn btn-bg-three border-radius-5">

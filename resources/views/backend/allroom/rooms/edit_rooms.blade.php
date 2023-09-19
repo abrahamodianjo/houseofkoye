@@ -144,7 +144,7 @@
                                                     <select name="facility_name[]" id="facility_name" class="form-control">
                                                           <option value="">Select Facility</option>
                                                           <option value="Complimentary Breakfast" {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}>Complimentary Breakfast</option>
-                                         <option value="32/42 inch LED TV"  {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}> 32/42 inch LED TV</option>
+                                         <option value="32/42 inch LED TV"  {{$item->facility_name == '32/42 inch LED TV'?'selected':''}}> 32/42 inch LED TV</option>
                                        
                                         <option value="Smoke alarms"  {{$item->facility_name == 'Smoke alarms'?'selected':''}}>Smoke alarms</option>
                                        

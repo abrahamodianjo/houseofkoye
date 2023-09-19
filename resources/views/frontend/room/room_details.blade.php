@@ -150,10 +150,10 @@
 <div class="side-bar-list">
     <ul>
        <li>
-            <a href="#"> <b>Capacity : </b> {{$roomdetails->room_capacity}} Person(s) <i class='bx bxs-cloud-download'></i></a>
+            <b>Capacity : </b> {{$roomdetails->room_capacity}} Person(s) <i class='bx bxs-cloud-download'></i>
         </li>
         <li>
-             <a href="#"> <b>Size : </b>{{$roomdetails->size}}ft2 <i class='bx bxs-cloud-download'></i></a>
+              <b>Size : </b>{{$roomdetails->size}}ft2 <i class='bx bxs-cloud-download'></i>
         </li>
        
        
@@ -174,10 +174,10 @@
 <div class="side-bar-list">
     <ul>
        <li>
-            <a href="#"> <b>View : </b> {{$roomdetails->view}} <i class='bx bxs-cloud-download'></i></a>
+             <b>View : </b> {{$roomdetails->view}} <i class='bx bxs-cloud-download'></i>
         </li>
         <li>
-             <a href="#"> <b>Bad Style : </b> {{$roomdetails->bed_style}} <i class='bx bxs-cloud-download'></i></a>
+              <b>Bed Style : </b> {{$roomdetails->bed_style}} <i class='bx bxs-cloud-download'></i>
         </li>
          
     </ul>
