@@ -60,8 +60,12 @@
             </div>
         </div>
 
+        <input type="hidden"  id="total_adult" value="{{$roomsdetails->total_adult}}">
+        <input type="hidden"  id="room_price" value="{{$roomsdetails->price}}">
+        <input type="hidden"  id="discount_p" value="{{$roomsdetails->discount}}">
+
         <div class="col-lg-12">
-            <div class="form-group" name="number_of_rooms" id="select_room">
+            <div class="form-group number_of_rooms" name="number_of_rooms" id="select_room">
                 <label>Numbers of Rooms</label>
                 <select class="form-control">
                     @for ($i = 1; $i <= 5; $i++) 
@@ -69,6 +73,8 @@
                 @endfor
                 </select>	
             </div>
+            <input type="hidden" name="available_room" id="" value="available_room">
+            <p class="available_room"></p>
         </div>
 
 
@@ -77,15 +83,15 @@
                 <tbody>
                     <tr>
                         <td> <p>Sub-Total</p></td>
-                        <td style="text-align: right"><p>subTotal</p></td>
+                        <td style="text-align: right"><span class="t_subtotal">0</span></td>
                     </tr>
                     <tr>
                         <td> <p>Discount</p></td>
-                        <td  style="text-align: right"><p>subTotal</p></td>
+                        <td  style="text-align: right"><span class="t_discount">0</span></td>
                     </tr>
                     <tr>
                         <td> <p>Total</p></td>
-                        <td  style="text-align: right"><p>subTotal</p></td>
+                        <td  style="text-align: right"><span class="t_g_total">0</span></td>
                     </tr>
                     
                 </tbody>
