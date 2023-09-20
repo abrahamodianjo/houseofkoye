@@ -26,7 +26,7 @@
                         </li>
                         <li>
                             <i class='bx bx-envelope'></i>
-                            <a href="mailto:hello@atoli.com">hello@atoli.com</a>
+                            <a href="mailto:hello@houseofkoye.co.uk">hello@houseofkoye.co.uk</a>
                         </li>
 
                         @auth

@@ -17,6 +17,7 @@
     </div>
 </div>
 <!-- Inner Banner End -->
+<div id="debugInfo"></div>
 
 <!-- Room Details Area End -->
 <div class="room-details-area pt-100 pb-70">
@@ -69,9 +70,9 @@
         <input type="hidden"  id="discount_p" value="{{$roomdetails->discount}}">
 
         <div class="col-lg-12">
-            <div class="form-group number_of_rooms" name="number_of_rooms" id="select_room">
+            <div class="form-group number_of_rooms" name="number_of_rooms">
                 <label>Numbers of Rooms</label>
-                <select class="form-control">
+                <select class="form-control" id="select_room" >
                     @for ($i = 1; $i <= 5; $i++) 
                     <option value="0{{$i}}">0{{$i}}</option>
                 @endfor
@@ -314,6 +315,7 @@
         </div>
     </div>
 </div>
+
 <!-- Room Details Other End -->
 <script>
     $(document).ready(function () {
@@ -323,21 +325,31 @@
        if (check_in != '' && check_out != ''){
           getAvaility(check_in, check_out, room_id);
        }
+
+
        $("#check_out").on('change', function () {
           var check_out = $(this).val();
           var check_in = $("#check_in").val();
+
           if(check_in != '' && check_out != ''){
              getAvaility(check_in, check_out, room_id);
           }
        });
+
        $(".number_of_rooms").on('change', function () {
           var check_out = $("#check_out").val();
           var check_in = $("#check_in").val();
+
           if(check_in != '' && check_out != ''){
              getAvaility(check_in, check_out, room_id);
           }
        });
+
+
     });
+
+
+
     function getAvaility(check_in, check_out, room_id) {
        $.ajax({
           url: "{{ route('check_room_availability') }}",
@@ -349,16 +361,35 @@
           }
        });
     }
+
     function price_calculate(total_nights){
        var room_price = $("#room_price").val();
        var discount_p = $("#discount_p").val();
        var select_room = $("#select_room").val();
+      
+       if (isNaN(room_price) || room_price === "") {
+            $("#debugInfo").append("<p>room_price is not a number: " + room_price + "</p>");
+        }
+        if (isNaN(discount_p) || discount_p === "") {
+            $("#debugInfo").append("<p>discount_p is not a number: " + discount_p + "</p>");
+        }
+        if (isNaN(total_nights) || total_nights === "") {
+            $("#debugInfo").append("<p>total_nights is not a number: " + total_nights + "</p>");
+        }
+        if (isNaN(select_room) || select_room === "") {
+            $("#debugInfo").append("<p>select_room is not a number: " + select_room + "</p>");
+        }
+
        var sub_total = room_price * total_nights * parseInt(select_room);
+
        var discount_price = (parseInt(discount_p)/100)*sub_total;
+
        $(".t_subtotal").text(sub_total);
        $(".t_discount").text(discount_price);
        $(".t_g_total").text(sub_total-discount_price);
+
     }
+
     $("#bk_form").on('submit', function () {
        var av_room = $("#available_room").val();
        var select_room = $("#select_room").val();
@@ -372,7 +403,9 @@
           alert('Sorry, you select maximum number of person');
           return false;
        }
+
     })
  </script>
+
 
 @endsection

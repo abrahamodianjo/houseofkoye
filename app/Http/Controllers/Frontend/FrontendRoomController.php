@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BookArea;
 use Intervention\Image\Facades\Image;
-use App\Models\RoomType;
 use App\Models\Room;
 use App\Models\Booking;
 use App\Models\MultiImage;
 use App\Models\Facility;
 use Carbon\CarbonPeriod;
 use App\Models\RoomBookedDate;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class FrontendRoomController extends Controller
 {
