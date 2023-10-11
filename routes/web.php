@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\RoomTypeController;
 use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Frontend\FrontendRoomController;
+use App\Http\Controllers\Frontend\BookingController;
 
 
 // Route::get('/', function () {
@@ -110,6 +111,21 @@ Route::controller(FrontendRoomController::class)->group(function () {
 
     Route::get('/check_room_availability/', 'CheckRoomAvailability')->name('check_room_availability');
     
+   
+});//End front controller
 
-    
+
+// ----------------------------------------------------------------
+
+Route::middleware(['auth'])->group(function(){
+
+    /// CHECKOUT ALL Route 
+Route::controller(BookingController::class)->group(function(){
+
+   Route::get('/checkout', 'Checkout')->name('checkout');
+   Route::post('/booking/store/', 'BookingStore')->name('user_booking_store');
+
+
 });
+
+}); // End Group Auth Middleware
