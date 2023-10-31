@@ -102,7 +102,7 @@ class BookingController extends Controller
 
            if ($request->payment_method == 'Stripe') {
             Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-            $s_pay = Stripe\Charge::create ([
+            $s_pay = Stripe\Charge::create([
                 "amount" => $total_price * 100,
                 "currency" => "usd",
                 "source" => $request->stripeToken,
