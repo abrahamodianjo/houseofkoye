@@ -27,6 +27,7 @@
                 <div class="room-details-side">
                     <div class="side-bar-form">
                         <h3>Booking Sheet </h3>
+<<<<<<< HEAD
 
 <form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
     @csrf
@@ -45,29 +46,50 @@
                 <i class='bx bxs-calendar'></i>
             </div>
         </div>
+=======
+                        <form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
+                            @csrf
+                            <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Check in</label>
+                                            <div class="input-group">
+                                <input autocomplete="off"  type="text" required name="check_id" id="check_id"  class="form-control dt_picker" value="{{ old('check_in') ? date('Y-m-d', strtotime(old('check_in'))) : '' }}" >
+                                                <span class="input-group-addon"></span>
+                                            </div>
+                                            <i class='bx bxs-calendar'></i>
+                                        </div>
+                                    </div>
 
-        <div class="col-lg-12">
-            <div class="form-group">
-                <label>Check Out</label>
-                <div class="input-group">
-   <input autocomplete="off"  type="text" required name="check_out" id="check_out"  class="form-control dt_picker" value="{{ old('check_out') ? date('Y-m-d', strtotime(old('check_out'))) : '' }}" >
-                    <span class="input-group-addon"></span>
-                </div>
-                <i class='bx bxs-calendar'></i>
-            </div>
-        </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Check Out</label>
+                                            <div class="input-group">
+                            <input autocomplete="off"  type="text" required name="check_out" id="check_out"  class="form-control dt_picker" value="{{ old('check_out') ? date('Y-m-d', strtotime(old('check_out'))) : '' }}" >
+                                                <span class="input-group-addon"></span>
+                                            </div>
+                                            <i class='bx bxs-calendar'></i>
+                                        </div>
+                                    </div>
+>>>>>>> origin/updated
 
-        <div class="col-lg-12">
-            <div class="form-group">
-                <label>Numbers of Persons</label>
-                <select class="form-control" name="persion" id="nmbr_person">
-                @for ($i = 1; $i <= 4; $i++) 
-      <option {{ old('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
-              @endfor
-                </select>	
-            </div>
-        </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Numbers of Persons</label>
+                                            <select class="form-control" name="persion" id="nmbr_person">
+                                            @for ($i = 1; $i <= 4; $i++) 
+                                <option {{ old('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
+                                        @endfor
+                                            </select>	
+                                        </div>
+                                    </div>
 
+                                    <input type="hidden"  id="total_adult" value="{{$roomdetails->total_adult}}">
+                                    <input type="hidden"  id="room_price" value="{{$roomdetails->price}}">
+                                    <input type="hidden"  id="discount_p" value="{{$roomdetails->discount}}">
+
+<<<<<<< HEAD
         <input type="hidden" id="total_adult" value="{{ $roomdetails->total_adult }}">
         <input type="hidden" id="room_price" value="{{ $roomdetails->price }}">
         <input type="hidden" id="discount_p" value="{{ $roomdetails->discount }}">
@@ -127,6 +149,55 @@
 
                   
                 </div>
+=======
+                                    <div class="col-lg-12">
+                                        <div class="form-group number_of_rooms" name="number_of_rooms">
+                                            <label>Numbers of Rooms</label>
+                                            <select class="form-control" id="select_room" >
+                                                @for ($i = 1; $i <= 5; $i++) 
+                                                <option value="0{{$i}}">0{{$i}}</option>
+                                            @endfor
+                                            </select>	
+                                        </div>
+                                        <input type="hidden" name="available_room" id="" value="available_room">
+                                        <p class="available_room"></p>
+                                    </div>
+                                <div class="col-lg-12">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td> <p>Sub-Total</p></td>
+                                                <td style="text-align: right"><p><span class="t_subtotal">0</span></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td> <p>Discount</p></td>
+                                                <td  style="text-align: right"><p><span class="t_discount">0</span></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td> <p>Total</p></td>
+                                                <td  style="text-align: right"><p><span class="t_g_total">0</span></p></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="default-btn btn-bg-three border-radius-5">
+                                        Book Now
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+           
+                    </div>
+
+
+             
+>>>>>>> origin/updated
             </div>
 
             <div class="col-lg-8">
