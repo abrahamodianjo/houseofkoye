@@ -1,13 +1,14 @@
 @extends('frontend.main_master')
 @section('main')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
   <!-- Inner Banner -->
   <div class="inner-banner inner-bg10">
     <div class="container">
         <div class="inner-title">
             <ul>
                 <li>
-                    <a href="{{url('rooms')}}">Home</a>
+                    <a href="index.html">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
                 <li>Room Details </li>
@@ -17,7 +18,6 @@
     </div>
 </div>
 <!-- Inner Banner End -->
-<div id="debugInfo"></div>
 
 <!-- Room Details Area End -->
 <div class="room-details-area pt-100 pb-70">
@@ -27,102 +27,118 @@
                 <div class="room-details-side">
                     <div class="side-bar-form">
                         <h3>Booking Sheet </h3>
-                        <form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
-                            @csrf
-                            <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Check in</label>
-                                            <div class="input-group">
-                                <input autocomplete="off"  type="text" required name="check_id" id="check_id"  class="form-control dt_picker" value="{{ old('check_in') ? date('Y-m-d', strtotime(old('check_in'))) : '' }}" >
-                                                <span class="input-group-addon"></span>
-                                            </div>
-                                            <i class='bx bxs-calendar'></i>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Check Out</label>
-                                            <div class="input-group">
-                            <input autocomplete="off"  type="text" required name="check_out" id="check_out"  class="form-control dt_picker" value="{{ old('check_out') ? date('Y-m-d', strtotime(old('check_out'))) : '' }}" >
-                                                <span class="input-group-addon"></span>
-                                            </div>
-                                            <i class='bx bxs-calendar'></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Numbers of Persons</label>
-                                            <select class="form-control" name="persion" id="nmbr_person">
-                                            @for ($i = 1; $i <= 4; $i++) 
-                                <option {{ old('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
-                                        @endfor
-                                            </select>	
-                                        </div>
-                                    </div>
-
-                                    <input type="hidden"  id="total_adult" value="{{$roomdetails->total_adult}}">
-                                    <input type="hidden"  id="room_price" value="{{$roomdetails->price}}">
-                                    <input type="hidden"  id="discount_p" value="{{$roomdetails->discount}}">
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group number_of_rooms" name="number_of_rooms">
-                                            <label>Numbers of Rooms</label>
-                                            <select class="form-control" id="select_room" >
-                                                @for ($i = 1; $i <= 5; $i++) 
-                                                <option value="0{{$i}}">0{{$i}}</option>
-                                            @endfor
-                                            </select>	
-                                        </div>
-                                        <input type="hidden" name="available_room" id="" value="available_room">
-                                        <p class="available_room"></p>
-                                    </div>
-                                <div class="col-lg-12">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td> <p>Sub-Total</p></td>
-                                                <td style="text-align: right"><p><span class="t_subtotal">0</span></p></td>
-                                            </tr>
-                                            <tr>
-                                                <td> <p>Discount</p></td>
-                                                <td  style="text-align: right"><p><span class="t_discount">0</span></p></td>
-                                            </tr>
-                                            <tr>
-                                                <td> <p>Total</p></td>
-                                                <td  style="text-align: right"><p><span class="t_g_total">0</span></p></td>
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-
-                                </div>
+<form action="{{ route('user_booking_store',$roomdetails->id) }}" method="post" id="bk_form">
+    @csrf
+    
+    <input type="hidden" name="room_id" value="{{ $roomdetails->id }}">
 
 
-                                <div class="col-lg-12 col-md-12">
-                                    <button type="submit" class="default-btn btn-bg-three border-radius-5">
-                                        Book Now
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+    <div class="row align-items-center">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Check in</label>
+                <div class="input-group">
+    <input autocomplete="off"  type="text" required name="check_in" id="check_in"  class="form-control dt_picker" value="{{ old('check_in') ? date('Y-m-d', strtotime(old('check_in'))) : '' }}" >
+                    <span class="input-group-addon"></span>
+                </div>
+                <i class='bx bxs-calendar'></i>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Check Out</label>
+                <div class="input-group">
+   <input autocomplete="off"  type="text" required name="check_out" id="check_out"  class="form-control dt_picker" value="{{ old('check_out') ? date('Y-m-d', strtotime(old('check_out'))) : '' }}" >
+                    <span class="input-group-addon"></span>
+                </div>
+                <i class='bx bxs-calendar'></i>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Numbers of Persons</label>
+                <select class="form-control" name="persion" id="nmbr_person">
+                @for ($i = 1; $i <= 4; $i++) 
+      <option {{ old('persion') == $i ? 'selected' : '' }} value="0{{ $i }}" >0{{ $i }} </option>
+              @endfor
+                </select>	
+            </div>
+        </div>
+
+        <input type="hidden" id="total_adult" value="{{ $roomdetails->total_adult }}">
+        <input type="hidden" id="room_price" value="{{ $roomdetails->price }}">
+        <input type="hidden" id="discount_p" value="{{ $roomdetails->discount }}">
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Numbers of Rooms</label>
+                <select class="form-control number_of_rooms" name="number_of_rooms" id="select_room">
+                    @for ($i = 1; $i <= 5; $i++)  
+                    <option value="0{{ $i }}">0{{ $i }}</option>
+                    @endfor
+                    
+                </select>	
+            </div>
+            <input type="hidden" name="available_room" id="available_room" >
+            <p class="available_room"></p>
+        </div>
+     
+
+        <div class="col-lg-12">
+            <table class="table">
+                
+    <tbody>
+        <tr> 
+        <td><p> SubTotal</p></td>
+        <td style="text-align: right" ><span class="t_subtotal">0</span> </td> 
+        </tr>
+
+        <tr> 
+        <td><p> Discount</p></td>
+        <td style="text-align: right" ><span class="t_discount">0</span></td> 
+        </tr>
+
+        <tr> 
+        <td><p> Total</p></td>
+        <td style="text-align: right" ><span class="t_g_total">0</span></td> 
+        </tr>
+        
+    </tbody>
+              </table>
+
+        </div>
+
+
+
+
+
+
+        <div class="col-lg-12 col-md-12">
+            <button type="submit" class="default-btn btn-bg-three border-radius-5">
+                Book Now
+            </button>
+        </div>
+    </div>
+</form>
                     </div>
+
+                  
                 </div>
             </div>
 
             <div class="col-lg-8">
                 <div class="room-details-article">
-
+                    
                     <div class="room-details-slider owl-carousel owl-theme">
                         @foreach ($multiImage as $image) 
                         <div class="room-details-item">
                             <img src="{{ asset('upload/roomimg/multi_img/'.$image->multi_img) }}" alt="Images">
                         </div>
                         @endforeach
-
+                       
                     </div>
 
 
@@ -132,11 +148,11 @@
                     <div class="room-details-title">
                         <h2>{{ $roomdetails->type->name }}</h2>
                         <ul>
-
+                            
                             <li>
                                <b> Basic : ${{ $roomdetails->price }}/Night/Room</b>
                             </li> 
-
+                         
                         </ul>
                     </div>
 
@@ -156,7 +172,7 @@
                             @endforeach
                         </ul>
 
-
+                        
                     </div>
 
 
@@ -180,8 +196,8 @@
         <li>
              <a href="#"> <b>Size : </b> {{ $roomdetails->size }}ft2 <i class='bx bxs-cloud-download'></i></a>
         </li>
-
-
+       
+       
     </ul>
 </div>
 </div>
@@ -204,7 +220,7 @@
         <li>
              <a href="#"> <b>Bad Style : </b> {{ $roomdetails->bed_style }} <i class='bx bxs-cloud-download'></i></a>
         </li>
-
+         
     </ul>
 </div>
 </div> 
@@ -257,7 +273,7 @@
         </div>
 
         <div class="row ">
-
+           
            @foreach ($otherRooms as $item)
             <div class="col-lg-6">
                 <div class="room-card-two">
@@ -293,7 +309,7 @@
         <li><i class='bx bx-show-alt'></i>{{ $item->view }}</li>
         <li><i class='bx bxs-hotel'></i> {{ $item->bed_style }}</li>
                                 </ul>
-
+                                
                                 <a href="room-details.html" class="book-more-btn">
                                     Book Now
                                 </a>
@@ -302,16 +318,16 @@
                     </div>
                 </div>
             </div>
-
+ 
             @endforeach
-
+           
 
 
         </div>
     </div>
 </div>
-
 <!-- Room Details Other End -->
+
 <script>
     $(document).ready(function () {
        var check_in = "{{ old('check_in') }}";
@@ -361,19 +377,6 @@
        var room_price = $("#room_price").val();
        var discount_p = $("#discount_p").val();
        var select_room = $("#select_room").val();
-      
-       if (isNaN(room_price) || room_price === "") {
-            $("#debugInfo").append("<p>room_price is not a number: " + room_price + "</p>");
-        }
-        if (isNaN(discount_p) || discount_p === "") {
-            $("#debugInfo").append("<p>discount_p is not a number: " + discount_p + "</p>");
-        }
-        if (isNaN(total_nights) || total_nights === "") {
-            $("#debugInfo").append("<p>total_nights is not a number: " + total_nights + "</p>");
-        }
-        if (isNaN(select_room) || select_room === "") {
-            $("#debugInfo").append("<p>select_room is not a number: " + select_room + "</p>");
-        }
 
        var sub_total = room_price * total_nights * parseInt(select_room);
 
