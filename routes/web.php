@@ -10,13 +10,13 @@ use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Frontend\FrontendRoomController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Backend\RoomListController;
-use App\Http\Controllers\Auth\CustomLoginController;
+use App\Http\Controllers\Backend\SettingController;
 
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::post('login', [CustomLoginController::class, 'login'])->name('login');
+
 Route::get('/', [UserController::class, 'index']);
 
 Route::get('/dashboard', function () {
@@ -104,6 +104,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
     Route::get('/booking/list', 'BookingList')->name('booking.list');
     Route::get('/edit_booking/{id}', 'EditBooking')->name('edit_booking');
+    Route::get('/download/invoice/{id}', 'DownloadInvoice')->name('download.invoice');
 
 });
 
@@ -126,6 +127,15 @@ Route::controller(RoomListController::class)->group(function(){
 });
 
 
+ /// Admin Room List All Route 
+ Route::controller(SettingController::class)->group(function(){
+
+    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+    Route::post('/smtp/update', 'SmtpUpdate')->name('smtp.update');
+
+
+
+});
 
 
 
@@ -159,14 +169,21 @@ Route::controller(BookingController::class)->group(function(){
    Route::post('/checkout/store/', 'CheckoutStore')->name('checkout.store');
    Route::match(['get', 'post'],'/stripe_pay', [BookingController::class, 'stripe_pay'])->name('stripe_pay');
 
-        // booking Update 
-        Route::post('/update/booking/status/{id}', 'UpdateBookingStatus')->name('update.booking.status');
-        Route::post('/update/booking/{id}', 'UpdateBooking')->name('update.booking');
+    // booking Update 
+    Route::post('/update/booking/status/{id}', 'UpdateBookingStatus')->name('update.booking.status');
+    Route::post('/update/booking/{id}', 'UpdateBooking')->name('update.booking');
 
-        // Assign Room Route 
-        Route::get('/assign_room/{id}', 'AssignRoom')->name('assign_room');
-        Route::get('/assign_room/store/{booking_id}/{room_number_id}', 'AssignRoomStore')->name('assign_room_store');
-        Route::get('/assign_room_delete/{id}', 'AssignRoomDelete')->name('assign_room_delete');
+    // Assign Room Route 
+    Route::get('/assign_room/{id}', 'AssignRoom')->name('assign_room');
+    Route::get('/assign_room/store/{booking_id}/{room_number_id}', 'AssignRoomStore')->name('assign_room_store');
+    Route::get('/assign_room_delete/{id}', 'AssignRoomDelete')->name('assign_room_delete');
+
+    // User Booking Route
+
+    Route::get('/user/booking', 'UserBooking')->name('user.booking');
+    Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
+
+
 });
 
 }); // End Group Auth Middleware

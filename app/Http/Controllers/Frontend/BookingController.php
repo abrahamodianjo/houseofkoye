@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Auth;
 use Stripe;
 use App\Models\BookingRoomList;
 use App\Models\RoomNumber;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookConfirm;
 
 
 class BookingController extends Controller
@@ -204,6 +207,22 @@ class BookingController extends Controller
         $booking->status = $request->status;
         $booking->save();
 
+        /// Start Sent Email 
+
+        $sendmail = Booking::find($id);
+
+        $data = [
+            'check_in' => $sendmail->check_in,
+            'check_out' => $sendmail->check_out,
+            'name' => $sendmail->name,
+            'email' => $sendmail->email,
+            'phone' => $sendmail->phone,
+        ];
+
+        Mail::to($sendmail->email)->send(new BookConfirm($data));
+
+        /// End Sent Email 
+
         $notification = array(
             'message' => 'Information Updated Successfully',
             'alert-type' => 'success'
@@ -316,6 +335,35 @@ class BookingController extends Controller
 
      }// End Method 
 
+     public function DownloadInvoice($id){
+
+        $editData = Booking::with('room')->find($id);
+        $pdf = Pdf::loadView('backend.booking.booking_invoice',compact('editData'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+     }// End Method 
+
+     public function UserBooking(){
+        $id = Auth::user()->id;
+        $allData = Booking::where('user_id',$id)->orderBy('id','desc')->get();
+        return view('frontend.dashboard.user_booking',compact('allData'));
+
+     }// End Method 
+
+     public function UserInvoice($id){
+
+        $editData = Booking::with('room')->find($id);
+        $pdf = Pdf::loadView('backend.booking.booking_invoice',compact('editData'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+     }// End Method 
+  
 
 
 
