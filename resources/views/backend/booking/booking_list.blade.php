@@ -43,6 +43,7 @@
                             <th>Payment</th>
                             <th>Status</th>
                             <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -67,10 +68,10 @@
                                 <span class="text-danger">Pending</span>
                                  @endif </td>
 
-                            <td>
-                            <td>
-     <a href="{{ route('delete.team',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
-
+                       
+                            <td> <a href="{{ route('edit_booking',$item->id) }}" class="btn btn-primary bx bx-edit"></a>
+                         
+                            <a href="{{ route('delete_booking',$item->id) }}" class="btn btn-danger bx bx-trash" id="delete"></a>
                             </td>
                         </tr>
                         @endforeach 
