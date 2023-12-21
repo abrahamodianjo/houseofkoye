@@ -16,7 +16,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.team') }}" class="btn btn-primary px-5">Add Testimonial </a>
+                <a href="{{ route('add.testimonial') }}" class="btn btn-primary px-5">Add Testimonial </a>
 
             </div>
         </div>
@@ -47,8 +47,8 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->city }}</td> 
                             <td>
-    <a href="{{ route('edit.team',$item->id) }}" class="btn btn-warning px-3 radius-30"> Edit</a>
-    <a href="{{ route('delete.team',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
+                            <a href="{{ route('edit.testimonial',$item->id) }}"  class="btn btn-warning bx bx-edit"></a>
+                            <a href="{{ route('delete.testimonial',$item->id) }}" class="btn btn-danger bx bx-trash" id="delete"></a>
 
                             </td>
                         </tr>

@@ -118,6 +118,17 @@ Route::controller(RoomListController::class)->group(function(){
     Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
     Route::post('/smtp/update', 'SmtpUpdate')->name('smtp.update');
 
+});
+
+ /// Tesimonial All Route 
+ Route::controller(TestimonialController::class)->group(function(){
+
+    Route::get('/all/testimonial', 'AllTestimonial')->name('all.testimonial');
+    Route::get('/add/testimonial', 'AddTestimonial')->name('add.testimonial'); 
+    Route::post('/store/testimonial', 'StoreTestimonial')->name('testimonial.store'); 
+    Route::get('/edit/testimonial/{id}', 'EditTestimonial')->name('edit.testimonial');
+    Route::post('/update/testimonial', 'UpdateTestimonial')->name('testimonial.update'); 
+    Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
 
 
 });
@@ -182,7 +193,7 @@ Route::controller(BookingController::class)->group(function(){
     Route::get('/user/booking', 'UserBooking')->name('user.booking');
     Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
 
-    Route::get('/all/testimonial', 'AllTestimonial')->name('all.testimonial'); 
+
 
 });
 
@@ -226,6 +237,20 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user/booking', 'UserBooking')->name('user.booking');
     Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
  
+});
+
+Route::get('/check-database-connection', function () {
+    try {
+        $connection = DB::connection()->getPdo();
+
+        if ($connection) {
+            return "Database connection successful!";
+        } else {
+            return "Unable to establish a database connection.";
+        }
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
 });
 
 }); // End Group Auth Middleware
