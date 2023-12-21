@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
@@ -12,11 +12,14 @@ use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\CommentController;
+use App\Http\Controllers\Backend\ReportController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 Route::get('/', [UserController::class, 'Index']);
+
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.user_dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,6 +32,8 @@ Route::middleware('auth')->group(function () {
    
    
 });
+
+
 require __DIR__.'/auth.php';
 // Admin Group Middleware 
 Route::middleware(['auth','roles:admin'])->group(function(){
@@ -154,6 +159,20 @@ Route::controller(BlogController::class)->group(function(){
 
 });
 
+/// Frontend Comment All Route 
+Route::controller(CommentController::class)->group(function(){ 
+    Route::get('/all/comment/', 'AllComment')->name('all.comment');
+    Route::post('/update/comment/status', 'UpdateCommentStatus')->name('update.comment.status');  
+
+});
+
+// Booking Report All Route 
+Route::controller(ReportController::class)->group(function(){ 
+    Route::get('/booking/report/', 'BookingReport')->name('booking.report');
+    Route::post('/search-by-date', 'SearchByDate')->name('search-by-date');
+
+});
+
 });//End Admin Group middleware
 
 //Room  All Route
@@ -184,7 +203,7 @@ Route::controller(FrontendRoomController::class)->group(function () {
 });
 
 
-// ----------------------------------------------------------------
+/////////////////////////////////////Begin Admin Group Middleware////////////////////////////////////////////////////////////// 
 
 Route::middleware(['auth'])->group(function(){
 
@@ -210,13 +229,29 @@ Route::controller(BookingController::class)->group(function(){
     Route::get('/user/booking', 'UserBooking')->name('user.booking');
     Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
 
+});
+}); /////////////////////////////////////End Admin Group Middleware////////////////////////////////////////////////////////////// 
+
+
+
+ /// Frontend Blog  All Route 
+ Route::controller(BlogController::class)->group(function(){
+
+    Route::get('/blog/details/{slug}', 'BlogDetails');
+    Route::get('/blog/cat/list/{id}', 'BlogCatList');
+    Route::get('/blog', 'BlogList')->name('blog.list');
+
+});
+
+/// Frontend Comment All Route 
+Route::controller(CommentController::class)->group(function(){
+
+    Route::post('/store/comment/', 'StoreComment')->name('store.comment');
 
 
 });
 
 
-
-}); // End Admin Group Middleware 
 
 
  /// Room All Route 
