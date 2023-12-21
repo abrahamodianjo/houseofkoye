@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Backend\RoomListController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Backend\BlogController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -130,12 +131,28 @@ Route::controller(RoomListController::class)->group(function(){
     Route::post('/update/testimonial', 'UpdateTestimonial')->name('testimonial.update'); 
     Route::get('/delete/testimonial/{id}', 'DeleteTestimonial')->name('delete.testimonial');
 
-
 });
 
+/// Blog Category All Route 
+Route::controller(BlogController::class)->group(function(){
 
+    Route::get('/blog/category', 'BlogCategory')->name('blog.category');
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::get('/edit/blog/category/{id}', 'EditBlogCategory');
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+});
 
+Route::controller(BlogController::class)->group(function(){
 
+    Route::get('/all/blog/post', 'AllBlogPost')->name('all.blog.post');
+    Route::get('/add/blog/post', 'AddBlogPost')->name('add.blog.post');
+    Route::post('/store/blog/post', 'StoreBlogPost')->name('store.blog.post');
+    Route::get('/edit/blog/post/{id}', 'EditBlogPost')->name('edit.blog.post');
+    Route::post('/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
+    Route::get('/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
+
+});
 
 });//End Admin Group middleware
 
@@ -237,20 +254,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user/booking', 'UserBooking')->name('user.booking');
     Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
  
-});
-
-Route::get('/check-database-connection', function () {
-    try {
-        $connection = DB::connection()->getPdo();
-
-        if ($connection) {
-            return "Database connection successful!";
-        } else {
-            return "Unable to establish a database connection.";
-        }
-    } catch (\Exception $e) {
-        return "Error: " . $e->getMessage();
-    }
 });
 
 }); // End Group Auth Middleware
