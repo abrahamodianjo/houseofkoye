@@ -41,7 +41,7 @@
 
     <div class="col-md-6">
         <label for="input1" class="form-label">Permission Group </label>
-        <select name="guard_name" class="form-select mb-3" aria-label="Default select example">
+        <select name="group_name" class="form-select mb-3" aria-label="Default select example">
             <option selected="">Select Group </option>
             <option value="Team">Team </option>
             <option value="Book Area">Book Area</option>

@@ -200,7 +200,7 @@ Route::controller(ReportController::class)->group(function(){
     Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
 });
 
- /// Gallery All Route 
+ /// Permissions All Route 
  Route::controller(RoleController::class)->group(function(){
 
     Route::get('/all/permission', 'AllPermission')->name('all.permission');
@@ -218,6 +218,42 @@ Route::controller(ReportController::class)->group(function(){
 
 
 });
+ /// Role All Route 
+ Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/roles', 'AllRoles')->name('all.roles');
+    Route::get('/add/roles', 'AddRoles')->name('add.roles');
+    Route::post('/store/roles', 'StoreRoles')->name('store.roles');
+    Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
+    Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+    Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
+
+
+    Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+    Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+    Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+
+    Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
+    Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+    Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
+
+
+});
+
+/// Admin User All Route 
+Route::controller(AdminController::class)->group(function(){
+
+    Route::get('/all/admin', 'AllAdmin')->name('all.admin'); 
+    Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+    Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
+    Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
+    Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
+    Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+
+});
+
+
+
 
 
 });//End Admin Group middleware
