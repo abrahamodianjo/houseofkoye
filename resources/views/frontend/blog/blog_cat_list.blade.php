@@ -109,16 +109,7 @@
                                                 {{ $post->post_titile }}
                                             </a>
                                         </h4>
-                                        <ul>
-                                            <li>
-                                                <i class='bx bx-user'></i>
-                                                29K
-                                            </li>
-                                            <li>
-                                                <i class='bx bx-message-square-detail'></i>
-                                                15K
-                                            </li>
-                                        </ul>
+                                     
                                     </div>
                                 </article>
                                 @endforeach

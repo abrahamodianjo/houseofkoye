@@ -54,9 +54,13 @@
                             <td>{{$item->twitter}}</td>
                             <td>{{$item->linkedin}}</td>
                             <td>
+                            @if(Auth::user()->can('team.edit'))
                             <i><a href="{{route('edit.team',$item->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
-                            <i><a href="{{route('delete.team',$item->id)}}" class="btn btn-danger radius-30 bx bx-trash " id="delete"></a></i>        
-                            </td>
+                            @endif
+                            @if(Auth::user()->can('team.delete'))
+                            <a href="{{ route('delete.team',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
+                            @endif  
+                        </td>
                             
                         </tr>
 

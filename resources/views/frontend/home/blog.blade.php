@@ -21,8 +21,7 @@
                     <div class="content">
                         <ul>
                             <li>{{ $item->created_at->format('M d Y')  }}</li>
-                            <li><i class='bx bx-user'></i>29K</li>
-                            <li><i class='bx bx-message-alt-dots'></i>15K</li>
+                          
                         </ul>
                         <h3>
                             <a href="blog-details.html">{{ $item->post_titile }}</a>

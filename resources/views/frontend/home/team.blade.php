@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $team = App\Models\Team::latest()->get();
 @endphp
 
@@ -41,4 +41,4 @@
             @endforeach
         </div>
     </div>
-</div>
+</div> --}}
