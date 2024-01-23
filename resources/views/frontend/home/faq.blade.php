@@ -14,7 +14,7 @@
                             <li class="accordion-item">
                                 <a class="accordion-title" href="javascript:void(0)">
                                     <i class='bx bx-plus'></i>
-                                    How I Will Book a Room or Resort?
+                                    How do you book our property? 
                                 </a>
 
                                 <div class="accordion-content">

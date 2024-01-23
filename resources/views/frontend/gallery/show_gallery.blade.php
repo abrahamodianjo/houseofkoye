@@ -10,9 +10,9 @@
                     <a href="index.html">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
-                <li>Gallery</li>
+                <li>Our Properties</li>
             </ul>
-            <h3>Gallery</h3>
+            <h3>Properties Gallery</h3>
         </div>
     </div>
 </div>

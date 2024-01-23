@@ -4,12 +4,11 @@
 
 
 <!-- Banner Area -->
-<div class="banner-area" style="height: 480px;">
+<div class="banner-area" style="height: 500px;">
     <div class="container">
         <div class="banner-content">
-            <h1>Discover a Hotel & Resort to Book a Suitable Room</h1>
-            
-             
+            <h1>Discover Your Ideal Birmingham Stay with Us</h1>
+           
         </div>
     </div>
 </div>
@@ -55,7 +54,7 @@
 
                     <div class="col-lg-4 col-md-4">
                         <button type="submit" class="default-btn btn-bg-one border-radius-5">
-                            Check Availability
+                            Search
                         </button>
                     </div>
                 </div>

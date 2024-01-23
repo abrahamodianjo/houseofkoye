@@ -10,7 +10,7 @@
                 <div class="col-lg-8 col-md-8">
                     <div class="copy-right-text text-align1">
                         <p>
-                            {{ $setting->copyright }}
+                            {{ $setting->copyright }} <a href="https://www.linkedin.com/in/abraham-odianjo/" target="_blank">Abraham Odianjo</a>
                         </p>
                     </div>
                 </div>
