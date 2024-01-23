@@ -41,7 +41,7 @@
                                 
                             @endphp
                             <i class='bx bxs-user-pin'></i>
-                            <a href="{{route('dashboard')}}">Hi {{$profileData->name}}</a>
+                            <a href="{{route('dashboard')}}"> Hi {{$profileData->name}}</a>
                         </li>
 
                         <li>

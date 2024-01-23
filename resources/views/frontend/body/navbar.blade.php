@@ -53,16 +53,44 @@
                                 Contact
                             </a>
                         </li>
+                        @auth
                         <li class="nav-item-btn">
-                            <a href="#" class="default-btn btn-bg-one border-radius-5">Book Now</a>
+                            @php
+                            $id = Auth::user()->id;
+                            $profileData = App\Models\User::find($id);
+                                
+                            @endphp
+                            
+                            
+                            <a  class="default-btn btn-bg-one border-radius-5" href="{{route('dashboard')}}">Dashboard</a>
+                            
                         </li>
+                            @else
+                        
+                        <li class="nav-item-btn">
+                            <a  class="default-btn btn-bg-one border-radius-5" href="{{route('login')}}">Sign in</a>
+                            
+                        </li>
+                        @endauth
                        
                     </ul>
 
+                
+                @auth
                     
                     <div class="nav-btn">
-                        <a href="#" class="default-btn btn-bg-one border-radius-5">Book Now</a>
+                        @php
+                            $id = Auth::user()->id;
+                            $profileData = App\Models\User::find($id);
+                                
+                            @endphp
+                        
+                        <a  class="default-btn btn-bg-one border-radius-5" href="{{route('dashboard')}}">Dashboard</a>
+                        
+                        @else
+                        
                     </div>
+                    @endauth
                 </div>
             </nav>
         </div>

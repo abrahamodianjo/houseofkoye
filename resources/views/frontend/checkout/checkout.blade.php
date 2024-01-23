@@ -165,14 +165,14 @@
                             
             <p>
    <input type="radio" id="cash-on-delivery" name="payment_method" value="COD">
-                <label for="cash-on-delivery">Cash On Delivery</label>
+                <label for="cash-on-delivery">Request to pay cash</label>
             </p>
            
            
-              <p>
-                <input type="radio" class="pay_method" id="stripe" name="payment_method" value="Stripe">
-                 <label for="stripe">Stripe</label>
-                   </p>
+              <!--<p>-->
+              <!--  <input type="radio" class="pay_method" id="stripe" name="payment_method" value="Stripe">-->
+              <!--   <label for="stripe">Stripe</label>-->
+              <!--     </p>-->
          
           <div id="stripe_pay" class="d-none">
                  <br>
