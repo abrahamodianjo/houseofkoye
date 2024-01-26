@@ -93,6 +93,19 @@
             </ul>
         </li>
 
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">F.A.Q </div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.faq') }}"><i class='bx bx-radio-circle'></i>All F.A.Q Questions </a>
+                </li> 
+
+            </ul>
+        </li>
+
 
         <li class="menu-label">Manage Booking</li>
         

@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\CommentController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\FaqController;
 
 
 
@@ -61,6 +62,18 @@ Route::controller(TeamController::class)->group(function(){
     Route::post('/team/update', 'UpdateTeam')->name('team.update');
     Route::get('/delete/team/{id}', 'DeleteTeam')->name('delete.team');
 });
+
+/// F.A.Q All Route 
+Route::controller(FaqController::class)->group(function(){
+    Route::get('/all/faq', 'AllFaq')->name('all.faq');
+    Route::get('/add/faq', 'AddFaq')->name('add.faq');
+    Route::post('/faq/store', 'StoreFaq')->name('faq.store');
+    Route::get('edit/faq/{id}', 'EditFaq')->name('edit.faq');
+    Route::post('/faq/update', 'UpdateFaq')->name('faq.update');
+    Route::get('delete/faq/{id}', 'DeleteFaq')->name('delete.faq');
+});
+
+
  /// Book Area All Route 
  Route::controller(TeamController::class)->group(function(){
     Route::get('/book/area', 'BookArea')->name('book.area');
