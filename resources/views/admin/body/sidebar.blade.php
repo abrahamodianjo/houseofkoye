@@ -18,9 +18,57 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
+        <li class="menu-label">Manage Booking</li>
+        
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-cart'></i>
+                </div>
+                <div class="menu-title">Booking Settings </div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('booking.list') }}"><i class='bx bx-radio-circle'></i>Booking List </a>
+                </li>
+                <li> <a href="{{ route('add.room.list') }}"><i class='bx bx-radio-circle'></i>Add Booking </a>
+                </li>
+                
+            </ul>
+        </li>
+        
+        
+        <li>
+            <a href="{{route('view.room.list')}}">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">View Rooms</div>
+            </a>
+        </li>
+
+        
+        <li>
+            <a href="{{route('room.type.list')}}">
+                <div class="parent-icon"><i class='bx bx-buildings'></i>
+                </div>
+                <div class="menu-title">Room Type List</div>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="{{route('booking.report')}}">
+                <div class="parent-icon"><i class='bx bx-radio-circle'></i>
+                </div>
+                <div class="menu-title">Booking Report</div>
+            </a>
+        </li>
+      
+     
+       
+
         <li class="menu-label">Home setup</li>
 
-        @if(Auth::user()->can('team.menu'))
+        {{-- @if(Auth::user()->can('team.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="lni lni-users"></i>
@@ -38,13 +86,13 @@
                 @endif 
             </ul>
         </li>
-        @endif
+        @endif --}}
         @if(Auth::user()->can('bookarea.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-book-add"></i>
                 </div>
-                <div class="menu-title">Book Area - Home </div>
+                <div class="menu-title">Book Area - Home Page </div>
             </a>
             <ul>
                 @if(Auth::user()->can('update.bookarea'))
@@ -54,18 +102,7 @@
             </ul>
         </li>
         @endif
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class=" bx bx-buildings"></i>
-                </div>
-                <div class="menu-title">Manage Room Type </div>
-            </a>
-            <ul>
-                <li> <a href="{{route('room.type.list')}}"><i class='bx bx-radio-circle'></i>Room Type List</a>
-                </li>
-                
-            </ul>
-        </li>
+       
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
@@ -107,49 +144,7 @@
         </li>
 
 
-        <li class="menu-label">Manage Booking</li>
         
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
-                </div>
-                <div class="menu-title">Booking </div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('booking.list') }}"><i class='bx bx-radio-circle'></i>Booking List </a>
-                </li>
-                <li> <a href="{{ route('add.room.list') }}"><i class='bx bx-radio-circle'></i>Add Booking </a>
-                </li>
-                
-            </ul>
-        </li>
-        
-        
-
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                </div>
-                <div class="menu-title">Manage RoomList</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('view.room.list') }}"><i class='bx bx-radio-circle'></i>Room List</a>
-                
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                </div>
-                <div class="menu-title">Booking Report </div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('booking.report') }}"><i class='bx bx-radio-circle'></i>Booking Report </a>
-                </li> 
-
-            </ul>
-        </li>
-
        
         <li class="menu-label">Blog and Comments</li>
 
@@ -193,17 +188,17 @@
             <div class="menu-title">Email Setting</div>
             </a>
         <ul>
-            <li> <a href="{{ route('smtp.setting') }}"><i class='bx bx-radio-circle'></i>SMTP Setting</a>
-            </li>
+            {{-- <li> <a href="{{ route('smtp.setting') }}"><i class='bx bx-radio-circle'></i>SMTP Setting</a>
+            </li> --}}
             <li> <a href="{{ route('site.setting') }}"><i class='bx bx-radio-circle'></i>Site Setting</a>
             </li>
         </ul>
         </li>
     
-        <li class="menu-label">Others</li>
+
         <li class="menu-label">Role & Permission </li>
 
-        <li>
+        {{-- <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
                 </div>
@@ -222,10 +217,10 @@
         
         
 
-            </ul>
+            </ul> --}}
         </li>
 
-        <li>
+        {{-- <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
                 </div>
@@ -240,7 +235,7 @@
 
 
             </ul>
-        </li>
+        </li> --}}
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>

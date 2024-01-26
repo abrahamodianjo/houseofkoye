@@ -32,12 +32,9 @@
                     <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Sub-title</th>
-                            <th>Title_Desctiption</th>
-                            <th>F.A.Q</th>
-                            <th>F.A.Q Answer</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                     
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,12 +45,12 @@
                             <td>{{$item->short_desc}}</td>
                             <td>{{$item->long_desc}}</td>
                             <td>
-                            @if(Auth::user()->can('team.edit'))
-                            <i><a href="{{route('edit.team',$item->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
-                            @endif
-                            @if(Auth::user()->can('team.delete'))
-                            <a href="{{ route('delete.team',$item->id) }}" class="btn btn-danger px-3 radius-30" id="delete"> Delete</a>
-                            @endif  
+                           
+                            <i><a href="{{route('edit.faq',$item->id)}}" class="btn btn-warning radius-30 bx bx-edit"></a></i>
+                      
+                     
+                            <a href="{{ route('delete.faq',$item->id) }}" class="btn btn-danger px-3 radius-30 bx bx-trash" id="delete"> </a>
+                             
                         </td>
                             
                         </tr>
