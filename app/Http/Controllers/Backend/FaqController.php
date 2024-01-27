@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\faq;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
 
 class FaqController extends Controller
@@ -67,10 +66,9 @@ class FaqController extends Controller
 
         public function DeleteFaq($id){
 
-            $faq_id = Faq::findOrFail($id);
-    
-    
-            Faq::findOrFail($faq_id)->delete();
+            $faq = Faq::findOrFail($id);
+            $faq->delete();
+            
             $notification = array(
                 'message' => 'F.A.Q deleted Successfully',
                 'alert-type' => 'success'

@@ -27,7 +27,7 @@
     <div class="col-lg-8">
         <div class="card">
 
-            <form action="{{ route('faq.store') }}" method="post" enctype="multipart/form-data" id="myForm">
+            <form action="{{ route('faq.update') }}" method="post" enctype="multipart/form-data" id="myForm">
                 @csrf
 
                 <input type="hidden" name="id" value="{{ $faq->id }}">

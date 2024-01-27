@@ -116,14 +116,6 @@ Route::controller(FaqController::class)->group(function(){
 
 });
 
-/// Admin Room List All Route 
-Route::controller(RoomListController::class)->group(function(){
-
-    Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list'); 
-
-
-});
-
  /// Admin Room List All Route 
  Route::controller(RoomListController::class)->group(function(){
 
@@ -283,14 +275,7 @@ Route::controller(FrontendRoomController::class)->group(function () {
     
       
 });
- /// Admin Room List All Route 
- Route::controller(RoomListController::class)->group(function(){
-    Route::get('/view/room/list', 'ViewRoomList')->name('view.room.list');
-    Route::get('/add/room/list', 'AddRoomList')->name('add.room.list'); 
-    Route::post('/store/roomlist', 'StoreRoomList')->name('store.roomlist'); 
-    
-      
-});
+
  /// Admin Room List All Route 
  Route::controller(SettingController::class)->group(function(){
     Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
