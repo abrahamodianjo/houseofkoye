@@ -1,6 +1,19 @@
 @extends('frontend.main_master')
 @section('main')
 
+@php
+$totalBookings = $allData->count();
+$pendingBookings = $allData->where('status', 0)->count();
+$completedBookings = $allData->where('status', 1)->count();
+
+session(['bookingStatistics' => [
+    'total' => $totalBookings,
+    'pending' => $pendingBookings,
+    'completed' => $completedBookings,
+], 'allData' => $allData]);
+
+@endphp
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
   <!-- Inner Banner -->
@@ -12,9 +25,9 @@
                     <a href="index.html">Home</a>
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
-                <li>User Booking List </li>
+                <li>Booking Details</li>
             </ul>
-            <h3>User Booking List</h3>
+            <h3>Booking details</h3>
         </div>
     </div>
 </div>
@@ -34,18 +47,57 @@
             <div class="col-lg-9">
                 <div class="service-article">
 
-
+                   
     <section class="checkout-area pb-70">
     <div class="container">
-        <form action="{{ route('password.change.store') }}" method="post" enctype="multipart/form-data">
+        <form action="#" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="billing-details">
-                        <h3 class="title">User Booking List  </h3>
+                       
+                        <h1 class="title">Booking Information </h1>
 
+                        <div class="row">
+    
+                            <div class="col-md-4">
+                                <div class="card text-white bg-primary mb-3" style="max-width: 14rem;">
+                                    <div class="card-header">Total Booking</div>
+                                    <div   div class="card-body">
+                                        <h1 class="card-title" style="font-size: 20px;">{{ $totalBookings }} Total</h1>
+    
+                                    </div>
+                                </div>                   
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="card text-white bg-warning mb-3" style="max-width: 14rem;">
+                                            <div class="card-header">Pending Booking </div>
+                                                <div class="card-body">
+                                                    <h1 class="card-title" style="font-size: 20px;">{{ $pendingBookings }} Pending</h1>
+    
+                                                </div>
+                                </div>                   
+                            </div>
+    
+    
+                            <div class="col-md-4">
+                                <div class="card text-white bg-success mb-3" style="max-width: 14rem;">
+                                        <div class="card-header">Complete Booking</div>
+                                    <div class="card-body">
+                                        <h1 class="card-title" style="font-size: 20px;">{{ $completedBookings }} Complete</h1>
+                                    </div>
+                                </div>                   
+                            </div>
+    
+                        
+                        </div>
+    
 
+                        <div class="service-article-content">
+
+                            
 
                         <table class="table table-striped">
                             <thead>
@@ -69,11 +121,11 @@
                                 <td> <span class="badge bg-primary">{{ $item->check_in }}</span>  <span class="badge bg-warning text-dark">{{ $item->check_out }}</span> </td>
                                 <td>{{ $item->number_of_rooms }}</td>
                                 <td> 
-                                    @if ($item->status == 1)
-                                    <span class="badge bg-success">Complete</span>
-                                       @else
-                                       <span class="badge bg-info text-dark">Pending</span>
-                                    @endif
+                                @if ($item->status == 1)
+                                <span class="badge bg-success">Complete</span>
+                                    @else
+                                    <span class="badge bg-info text-dark">Pending</span>
+                                @endif
                     
                                 </td>
                                 </tr>

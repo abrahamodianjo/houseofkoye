@@ -10,14 +10,18 @@
                 <div class="col-lg-8 col-md-8">
                     <div class="copy-right-text text-align1">
                         <p>
-                            {{ $setting->copyright }} <a href="https://www.linkedin.com/in/abraham-odianjo/" target="_blank">Abraham Odianjo</a>
+                            House of Koye © 2023. All Rights Reserved. 
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4">
-                    <div class="social-icon text-align2">
-                        <ul class="social-link">
+                    <div class=" copy-right-text text-align2">
+
+                        <p>
+                            {{ $setting->copyright }} <a href="https://www.linkedin.com/in/abraham-odianjo/" target="_blank">Abraham Odianjo</a>
+                        </p>
+                        {{-- <ul class="social-link"> social-icon
                             <li>
                                 <a href="{{ $setting->facebook }}" target="_blank"><i class='bx bxl-facebook'></i></a>
                             </li> 
@@ -27,7 +31,7 @@
                             </li> 
                             
                             </li> 
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

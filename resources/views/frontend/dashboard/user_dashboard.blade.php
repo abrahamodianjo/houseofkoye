@@ -5,8 +5,17 @@
 
 $id = Auth::user()->id;
 $profileData = App\Models\User::find($id);
-    
+
+    // Retrieve booking statistics from the session
+$bookingStatistics = session('bookingStatistics', [
+    'total' => 0,
+    'pending' => 0,
+    'completed' => 0,
+]);
+$allData = session('allData', collect());
 @endphp
+
+
  <!-- Inner Banner -->
  <div class="inner-banner inner-bg6">
     <div class="container">
@@ -50,7 +59,7 @@ $profileData = App\Models\User::find($id);
                                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header">Total Booking</div>
                                     <div   div class="card-body">
-                                        <h1 class="card-title" style="font-size: 45px;">3 Total</h1>
+                                        <h1 class="card-title" style="font-size: 45px;">{{ $bookingStatistics['total'] }} Total</h1>
 
                                     </div>
                                 </div>                   
@@ -60,7 +69,7 @@ $profileData = App\Models\User::find($id);
                                 <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
                                             <div class="card-header">Pending Booking </div>
                                                 <div class="card-body">
-                                                    <h1 class="card-title" style="font-size: 45px;">3 Pending</h1>
+                                                    <h1 class="card-title" style="font-size: 45px;">{{ $bookingStatistics['pending'] }} Pending</h1>
 
                                                 </div>
                                 </div>                   
@@ -71,7 +80,7 @@ $profileData = App\Models\User::find($id);
                                 <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                                         <div class="card-header">Complete Booking</div>
                                     <div class="card-body">
-                                        <h1 class="card-title" style="font-size: 45px;">3 Complete</h1>
+                                        <h1 class="card-title" style="font-size: 45px;">{{ $bookingStatistics['completed'] }} Complete</h1>
                                     </div>
                                 </div>                   
                             </div>
@@ -80,12 +89,17 @@ $profileData = App\Models\User::find($id);
                         </div>                  
                     </div>
 
+                    
+
                         
                 </div>
             </div>  
+            
         </div>
     </div>
 </div>
 <!-- Service Details Area End -->
+
+
 
 @endsection
