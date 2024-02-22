@@ -1,6 +1,8 @@
 @extends('frontend.main_master')
 @section('main')
-
+@section('title')
+   Change Password 
+@endsection
 
    <!-- Inner Banner -->
    <div class="inner-banner inner-bg6">

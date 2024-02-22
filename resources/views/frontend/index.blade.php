@@ -1,98 +1,100 @@
 @extends('frontend.main_master')
 @section('main')
- 
+@section('title')
+House of Koye - Birmingham
+@endsection
+    <!-- Banner Area -->
+    <div class="banner-area" style="height: 500px;">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Discover Your Ideal Birmingham Stay with Us</h1>
 
-
-<!-- Banner Area -->
-<div class="banner-area" style="height: 500px;">
-    <div class="container">
-        <div class="banner-content">
-            <h1>Discover Your Ideal Birmingham Stay with Us</h1>
-           
+            </div>
         </div>
     </div>
-</div>
-<!-- Banner Area End -->
+    <!-- Banner Area End -->
 
-<!-- Banner Form Area -->
-<div class="banner-form-area">
-    <div class="container">
-        <div class="banner-form">
-            <form method="get" action="{{route('booking.search')}}">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-3">
-                        <div class="form-group">
-                            <label>CHECK IN TIME</label>
-                            <div class="input-group">
-                                <input autocomplete="off"  type="text" required name="check_in" class="form-control dt_picker" placeholder="yyy-mm-dd">
-                             </div>
-                            <i class='bx bxs-chevron-down'></i>	
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3">
-                        <div class="form-group">
-                            <label>CHECK OUT TIME</label>
-                            <div class="input-group">
-                                <input autocomplete="off"  type="text" required name="check_out" class="form-control dt_picker" placeholder="yyy-mm-dd">  <span class="input-group-addon"></span>
+    <!-- Banner Form Area -->
+    <div class="banner-form-area">
+        <div class="container">
+            <div class="banner-form">
+                <form method="get" action="{{ route('booking.search') }}">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label>CHECK IN TIME</label>
+                                <div class="input-group">
+                                    <input autocomplete="off" type="text" required name="check_in"
+                                        class="form-control dt_picker" placeholder="yyy-mm-dd">
+                                </div>
+                                <i class='bx bxs-chevron-down'></i>
                             </div>
-                            <i class='bx bxs-chevron-down'></i>	
+                        </div>
+
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label>CHECK OUT TIME</label>
+                                <div class="input-group">
+                                    <input autocomplete="off" type="text" required name="check_out"
+                                        class="form-control dt_picker" placeholder="yyy-mm-dd"> <span
+                                        class="input-group-addon"></span>
+                                </div>
+                                <i class='bx bxs-chevron-down'></i>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                <label>GUESTS</label>
+                                <select name="persion" class="form-control">
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+                            <button type="submit" class="default-btn btn-bg-one border-radius-5">
+                                Search
+                            </button>
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-2">
-                        <div class="form-group">
-                            <label>GUESTS</label>
-                            <select name="persion" class="form-control">
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                                <option>04</option>
-                            </select>	
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-4">
-                        <button type="submit" class="default-btn btn-bg-one border-radius-5">
-                            Search
-                        </button>
-                    </div>
-                </div>
 
 
-
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!-- Banner Form Area End -->
+    <!-- Banner Form Area End -->
 
-<!-- Room Area -->
+    <!-- Room Area -->
     @include('frontend.home.room_area')
-<!-- Room Area End -->
+    <!-- Room Area End -->
 
-<!-- Book Area Two-->
+    <!-- Book Area Two-->
     @include('frontend.home.book_area_two')
-<!-- Book Area Two End -->
+    <!-- Book Area Two End -->
 
-<!-- Services Area Three -->
+    <!-- Services Area Three -->
     @include('frontend.home.services')
-<!-- Services Area Three End -->
+    <!-- Services Area Three End -->
 
-<!-- Team Area Three -->
+    <!-- Team Area Three -->
     @include('frontend.home.team')
-<!-- Team Area Three End -->
+    <!-- Team Area Three End -->
 
-<!-- Testimonials Area Three -->
+    <!-- Testimonials Area Three -->
     @include('frontend.home.testimonals')
-<!-- Testimonials Area Three End -->
+    <!-- Testimonials Area Three End -->
 
-<!-- FAQ Area -->
+    <!-- FAQ Area -->
     @include('frontend.home.faq')
-<!-- FAQ Area End -->
+    <!-- FAQ Area End -->
 
-<!-- Blog Area -->
+    <!-- Blog Area -->
     @include('frontend.home.blog')
-<!-- Blog Area End -->
-
+    <!-- Blog Area End -->
 @endsection

@@ -1,5 +1,8 @@
 @extends('frontend.main_master')
 @section('main')
+@section('title')
+Blog Home
+@endsection
 
     <!-- Inner Banner -->
     <div class="inner-banner inner-bg4">

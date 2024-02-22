@@ -1,5 +1,10 @@
 @extends('frontend.main_master')
 @section('main')
+@section('title')
+   @foreach($bcategory as $cat)
+    {{ $cat->category_name }}
+    @endforeach
+@endsection
 
     <!-- Inner Banner -->
     <div class="inner-banner inner-bg4">

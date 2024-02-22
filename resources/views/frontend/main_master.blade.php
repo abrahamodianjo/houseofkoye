@@ -36,7 +36,7 @@
 <!-- toaster Style CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 	
-        <title>House of Koye</title>
+        <title>@yield('title')</title>
     </head>
     <body>
 

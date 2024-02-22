@@ -1,5 +1,8 @@
 @extends('frontend.main_master')
 @section('main')
+@section('title')
+   Booking 
+@endsection
 
 @php
 $totalBookings = $allData->count();
